@@ -1,0 +1,3 @@
+data/*.root
+data/*.npy
+data/old_data
