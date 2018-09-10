@@ -7,8 +7,9 @@ inpath = '/eos/project/d/dshep/TOPCLASS/BSMAnomaly_IsoLep_lt_45_pt_gt_23/'
 
 outpath = '/afs/cern.ch/user/o/ocerri/cernbox/AnomalyDetection/data/'
 
-SM_labels = ['Wlnu_lepFilter_13TeV', 'qcd_lepFilter_13TeV', 'ttbar_lepFilter_13TeV']
-BSM_labels = ['AtoChHW', 'AtoChHW_HIGHMASS', 'Ato4l_lepFilter_13TeV', 'Wprime_lepFilter_13TeV', 'Zprime_lepFilter_13TeV']
+SM_labels = [] #'Wlnu_lepFilter_13TeV', 'qcd_lepFilter_13TeV', 'ttbar_lepFilter_13TeV']
+# BSM_labels = ['AtoChHW', 'AtoChHW_HIGHMASS', 'Ato4l_lepFilter_13TeV', 'Wprime_lepFilter_13TeV', 'Zprime_lepFilter_13TeV']
+BSM_labels = ['Wprime_LOWMASS_lepFilter_13TeV', 'Wprime_lepFilter_13TeV', 'Zprime_lepFilter_13TeV']
 
 N_evnt_train = 3000000
 hlf_train = np.zeros((0,24))
