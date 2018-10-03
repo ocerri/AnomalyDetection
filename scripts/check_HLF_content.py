@@ -4,8 +4,8 @@ import numpy as np
 import os
 
 folder = '/eos/project/d/dshep/TOPCLASS/BSMAnomaly_IsoLep_lt_45_pt_gt_23'
-to_check = ['Ato4l_lepFilter_13TeV', 'leptoquark_LOWMASS_lepFilter_13TeV', 'qcd_lepFilter_13TeV_HLFONLY', 'qcd_lepFilter_13TeV_HLFONLY2',
-            'ttbar_lepFilter_13TeV_HLFONLY', 'Wlnu_lepFilter_13TeV_HLFONLY', 'Wprime_LOWMASS_lepFilter_13TeV', 'Zprime_LOWMASS_lepFilter_13TeV'
+to_check = ['leptoquark_LOWMASS_lepFilter_13TeV', 'qcd_lepFilter_13TeV',
+            'ttbar_lepFilter_13TeV', 'Wlnu_lepFilter_13TeV', 'Wprime_LOWMASS_lepFilter_13TeV', 'Zprime_LOWMASS_lepFilter_13TeV'
             ]
 
 

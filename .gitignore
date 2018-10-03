@@ -1,5 +1,5 @@
 articles
 tmp
 data
-VAE/VAE_oneperprocess_HLF/losses/*.h5
+VAE/*/losses/*.h5
 *.pyc

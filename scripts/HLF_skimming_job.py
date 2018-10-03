@@ -6,15 +6,15 @@ import argparse
 
 inpath = '/eos/project/d/dshep/TOPCLASS/BSMAnomaly_IsoLep_lt_45_pt_gt_23/'
 outpath = '/afs/cern.ch/user/o/ocerri/cernbox/AnomalyDetection/data/HLF_ONLY/'
-SM_labels = ['qcd_lepFilter_13TeV_HLFONLY', 'qcd_lepFilter_13TeV_HLFONLY2', 'ttbar_lepFilter_13TeV_HLFONLY', 'Wlnu_lepFilter_13TeV_HLFONLY',]
+SM_labels = ['qcd_lepFilter_13TeV', 'qcd_lepFilter_13TeV_HLFONLY', 'ttbar_lepFilter_13TeV', 'Wlnu_lepFilter_13TeV',]
 BSM_labels = ['leptoquark_LOWMASS_lepFilter_13TeV', 'Wprime_LOWMASS_lepFilter_13TeV', 'Zprime_LOWMASS_lepFilter_13TeV', 'Ato4l_lepFilter_13TeV']
 
 parser = argparse.ArgumentParser()
 parser.add_argument("sample_label", type=str, help='Name of the sample', nargs='+')
-parser.add_argument('-N', "--MaxNumber", type=int, default=999999999999999, help='Max number of events')
+parser.add_argument('-N', "--MaxNumber", type=int, default=5000000, help='Max number of events')
 parser.add_argument('-i', "--input_path", type=str, default=inpath)
 parser.add_argument('-o', "--output_path", type=str, default=outpath)
-parser.add_argument('-F', "--force", action='store_true', default=outpath)
+parser.add_argument('-F', "--force", action='store_true', default=False)
 args = parser.parse_args()
 
 
@@ -30,12 +30,14 @@ print
 
 for sample_label in args.sample_label:
     outname = args.output_path+sample_label+'_sample.npy'
+    # print outname
+    # print os.path.isfile(outname)
     if os.path.isfile(outname):
         if args.force:
             os.remove(outname)
         else:
             print 'File '+outname+' already existing'
-            exit(0)
+            continue
 
     hlf_train = np.zeros((0,23))
 
@@ -55,7 +57,13 @@ for sample_label in args.sample_label:
                 hlf = np.delete(hlf, 4, 1)
             elif hlf.shape[1] != 23:
                 print 'Non matching shapes ---> Exiting'
-                exit(0)
+                continue
+
+            #Change from radial to cathesian MET
+            METp = hlf[:,1]*np.cos(hlf[:,2])
+            METo = hlf[:,1]*np.sin(hlf[:,2])
+            hlf[:,1] = METp
+            hlf[:,2] = METo
 
             hlf_train = np.concatenate((hlf_train, hlf))
         except:
