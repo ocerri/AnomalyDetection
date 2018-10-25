@@ -78,3 +78,14 @@ def sum_of_Pgauss(x, mu, sigma):
 
     single_prob = aNorm*np.exp(-0.5*np.square(x_norm))/(sigma*np.sqrt(2*np.pi))
     return np.sum(single_prob, axis=1)/mu.shape[0]
+
+def ROC_curve(p_BSM, p_SM, eval_q_SM):
+    eval_p = np.percentile(1-p_SM, q=100*eval_q_SM)
+
+    out = (1-p_BSM) < eval_p
+    out = np.sum(out, axis=0)
+    q_BSM = out/float(p_BSM.shape[0])
+
+    AUC = np.trapz(q_BSM, eval_q_SM)
+
+    return q_BSM, AUC
