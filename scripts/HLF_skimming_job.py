@@ -75,7 +75,7 @@ for sample_label in args.sample_label:
                 exit(0)
 
         if hlf_train.shape[0] > args.MaxNumber:
-            print 'Max number of {} overcome'
+            print 'Max number of {} overcome'.format(args.MaxNumber)
             print 'At file', i, 'size:', hlf_train.shape[0], 'errors:', errors
             break
 
