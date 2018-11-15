@@ -1,4 +1,6 @@
 data/*.root
 data/*.npy
 data/old_data
+data/*
 VAE/VAE_oneperprocess_HLF/losses/*.h5
+VAE/VAE_HLFONLY/losses
